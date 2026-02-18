@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/pages/labeled_checkbox.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +20,18 @@ class Home extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Center(child: Text('Home')),
+      child: Center(
+        child: LabeledCheckbox(
+          label: 'Flutter is awesome!',
+          value: isSelected,
+          onChanged: (bool newValue) {
+            setState(() {
+              isSelected = newValue;
+            });
+          },
+          padding: EdgeInsets.all(10),
+        ),
+      ),
     );
   }
 }
