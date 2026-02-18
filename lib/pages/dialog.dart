@@ -12,7 +12,7 @@ class _AddRecipeDialogState extends State<AddRecipeDialog> {
   late TextEditingController ingredientiController;
   late TextEditingController procedimentoController;
 
-  final _formKey = GlobalKey<FormState>();
+  bool isValid = false;
 
   @override
   void initState() {
@@ -38,7 +38,6 @@ class _AddRecipeDialogState extends State<AddRecipeDialog> {
       child: AlertDialog(
         title: Text('Inserisci una nuova ricetta'),
         content: Form(
-          key: _formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -112,14 +111,26 @@ class _AddRecipeDialogState extends State<AddRecipeDialog> {
           ),
           ElevatedButton(
             onPressed: () {
-              final recipe = Recipe(
-                imageUrl: imageUrlController.text,
-                nome: nomeController.text,
-                ingredienti: ingredientiController.text,
-                procedimento: procedimentoController.text,
-              );
+              if (imageUrlController.text.isEmpty ||
+                  nomeController.text.isEmpty ||
+                  ingredientiController.text.isEmpty ||
+                  procedimentoController.text.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Inserisci tutti i campi')),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Inserendo la ricetta...')),
+                );
+                final recipe = Recipe(
+                  imageUrl: imageUrlController.text,
+                  nome: nomeController.text,
+                  ingredienti: ingredientiController.text,
+                  procedimento: procedimentoController.text,
+                );
 
-              Navigator.of(context).pop(recipe);
+                Navigator.of(context).pop(recipe);
+              }
             },
             child: Text("Salva"),
           ),
