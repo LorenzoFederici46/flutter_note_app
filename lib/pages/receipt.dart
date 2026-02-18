@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/model/recipe.dart';
 import 'package:note_app/pages/dialog.dart';
+import 'package:note_app/pages/recipe_info.dart';
 
 class Receipt extends StatefulWidget {
   @override
@@ -88,52 +89,7 @@ class ReceiptState extends State<Receipt> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: Text(recipe.nome),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.network(
-                  recipe.imageUrl,
-                  errorBuilder: (context, error, stackTrace) =>
-                      Icon(Icons.image_not_supported, size: 100),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  "Ingredienti:",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 4),
-                Text(recipe.ingredienti),
-                SizedBox(height: 16),
-                Text(
-                  "Procedimento:",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 4),
-                Text(recipe.procedimento),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text("Chiudi", style: TextStyle(color: Colors.black)),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              onPressed: () {
-                setState(() {
-                  ricette.remove(recipe);
-                });
-                Navigator.of(context).pop();
-              },
-              child: Text("Elimina", style: TextStyle(color: Colors.white)),
-            ),
-          ],
-        );
+        return RecipeInfo(recipe: recipe);
       },
     );
   }
