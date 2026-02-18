@@ -12,6 +12,8 @@ class _AddRecipeDialogState extends State<AddRecipeDialog> {
   late TextEditingController ingredientiController;
   late TextEditingController procedimentoController;
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -35,43 +37,73 @@ class _AddRecipeDialogState extends State<AddRecipeDialog> {
     return SingleChildScrollView(
       child: AlertDialog(
         title: Text('Inserisci una nuova ricetta'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: imageUrlController,
-              decoration: InputDecoration(
-                labelText: "URL Immagine",
-                border: OutlineInputBorder(),
+        content: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: imageUrlController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Inserisci un URL valido';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: "URL Immagine",
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: nomeController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Nome Ricetta",
+              SizedBox(height: 10),
+
+              TextFormField(
+                controller: nomeController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Importante inserire un nome per la ricetta';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Nome Ricetta",
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: ingredientiController,
-              decoration: InputDecoration(
-                labelText: "Ingredienti",
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+
+              TextFormField(
+                controller: ingredientiController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Inserisci almeno un ingrediente';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: "Ingredienti",
+                  border: OutlineInputBorder(),
+                ),
+                maxLines: 2,
               ),
-              maxLines: 2,
-            ),
-            SizedBox(height: 10),
-            TextField(
-              controller: procedimentoController,
-              decoration: InputDecoration(
-                labelText: "Procedimento",
-                border: OutlineInputBorder(),
+              SizedBox(height: 10),
+
+              TextFormField(
+                controller: procedimentoController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Inserisci il procedimento';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  labelText: "Procedimento",
+                  border: OutlineInputBorder(),
+                ),
+                maxLines: 3,
               ),
-              maxLines: 3,
-            ),
-          ],
+            ],
+          ),
         ),
         actions: [
           TextButton(
