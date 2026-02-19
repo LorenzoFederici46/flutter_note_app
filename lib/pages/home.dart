@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/model/list_item.dart';
-import 'package:note_app/pages/labeled_checkbox.dart';
+import 'package:note_app/components/labeled_checkbox.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

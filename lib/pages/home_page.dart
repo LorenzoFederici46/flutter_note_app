@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/pages/home.dart';
-import 'package:note_app/pages/navbar.dart';
+import 'package:note_app/components/navbar.dart';
 import 'package:note_app/pages/profile.dart';
 import 'package:note_app/pages/receipt.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/model/recipe.dart';
-import 'package:note_app/pages/dialog.dart';
-import 'package:note_app/pages/recipe_info.dart';
+import 'package:note_app/components/dialog.dart';
+import 'package:note_app/components/recipe_info.dart';
 
 class Receipt extends StatefulWidget {
   @override
