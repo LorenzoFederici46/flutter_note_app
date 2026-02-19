@@ -15,14 +15,14 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red.shade300,
+      color: Colors.blue.shade900,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: GNav(
           selectedIndex: selectedIndex,
           onTabChange: onTabChange,
-          backgroundColor: Colors.red.shade300,
-          color: Colors.white,
+          backgroundColor: Colors.blue.shade900,
+          color: const Color.fromRGBO(255, 255, 255, 1),
           activeColor: Colors.white,
           tabBackgroundColor: Colors.grey.shade800,
           gap: 8,

@@ -20,10 +20,19 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: const Icon(Icons.restaurant_menu_rounded, color: Colors.white),
         title: const Text('Benvenuti', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.red.shade300,
+        backgroundColor: Colors.blue.shade900,
       ),
 
-      body: IndexedStack(index: _selectedIndex, children: _pages),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.orange.shade400, Colors.orange.shade900],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: IndexedStack(index: _selectedIndex, children: _pages),
+      ),
 
       bottomNavigationBar: Navbar(
         selectedIndex: _selectedIndex,
