@@ -32,14 +32,14 @@ class _LabeledCheckboxState extends State<LabeledCheckbox> {
           children: <Widget>[
             Expanded(
               child: isChecked
-                  ? Text(
+                  ? Text('')
+                  : Text(
                       widget.label,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
-                    )
-                  : Text(''),
+                    ),
             ),
             Checkbox(
               value: widget.value,
