@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:note_app/model/recipe.dart';
 
 class AddRecipeDialog extends StatefulWidget {
+  const AddRecipeDialog({super.key});
+
   @override
   State<AddRecipeDialog> createState() => _AddRecipeDialogState();
 }

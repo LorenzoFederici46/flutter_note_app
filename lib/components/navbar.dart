@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:http/http.dart' as http;
 
 class Navbar extends StatelessWidget {
   final int selectedIndex;
@@ -36,4 +37,25 @@ class Navbar extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<String> getInfoFromWiki(String nameArticle) async {
+  final url = Uri.https(
+    'en.wikipedia.org',
+    '/api/rest_v1/page/summary/$nameArticle',
+  );
+
+  final res = await http.get(url);
+
+  if (res.statusCode == 200) {
+    final data = res.body;
+    return data;
+  }
+
+  return 'Error: Failed to fetch article "$nameArticle". Status code: ${res.statusCode}';
+}
+
+Future<void> funzione(String boh) async {
+  String result = await getInfoFromWiki(boh);
+  print(result);
 }

@@ -5,6 +5,8 @@ import 'package:note_app/pages/profile.dart';
 import 'package:note_app/pages/receipt.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<StatefulWidget> createState() => HomePageState();
 }

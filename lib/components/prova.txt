@@ -1,0 +1,6 @@
+equatable
+riverpod 2.6.1
+go router
+
+
+creare account in pub.dev

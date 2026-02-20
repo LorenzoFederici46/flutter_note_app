@@ -3,7 +3,7 @@ import 'package:note_app/model/recipe.dart';
 
 class RecipeInfo extends StatefulWidget {
   final Recipe recipe;
-  const RecipeInfo({required this.recipe});
+  const RecipeInfo({super.key, required this.recipe});
 
   @override
   State<RecipeInfo> createState() => _RecipeInfoState();

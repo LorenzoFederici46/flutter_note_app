@@ -4,6 +4,8 @@ import 'package:note_app/components/dialog.dart';
 import 'package:note_app/components/recipe_info.dart';
 
 class Receipt extends StatefulWidget {
+  const Receipt({super.key});
+
   @override
   State<StatefulWidget> createState() => ReceiptState();
 }
